@@ -1,5 +1,5 @@
 # import numpy as np
-import speech_recognition as sr
+import speech_recognition as sr 
 from gtts import gTTS
 from transformers import pipeline
 # import whisper

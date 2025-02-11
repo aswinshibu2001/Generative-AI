@@ -67,7 +67,7 @@
 #             ai.text_to_speech(res)
 
 
-# from transformers import pipeline
+# from transformers import pipeline 
 
 
 # # Load a chatbot model (e.g., Mistral, LLaMA)
