@@ -1,7 +1,8 @@
 # 📌 Voice enabled Chatbot
 
 "A Python-based chatbot that uses NLP to understand and respond to user queries. It first convert the query of the user given via voice command into a text(ASR).
-This text is later then passed to an LLM to generate accurate response. This response will then converted back to audio clip and gets played to the user(TTS)
+This text is later then passed to an LLM to generate accurate response. This response will then converted back to audio clip and gets played to the user(TTS).
+[Python speech recognition library](https://pypi.org/project/SpeechRecognition/) is used to convert the audio captured into text which then will be fed into the LLM as a query.
 Some of the refernce material that I have used to complete the task is attached here
 https://python.langchain.com/docs/introduction/"
 
