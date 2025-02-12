@@ -1,7 +1,0 @@
-streamlit 
-langchain
-langchain-core
-langchain-community
-pip install python-dotenv
-pip install -qU langchain-groq
-pip install -U langchain-community 

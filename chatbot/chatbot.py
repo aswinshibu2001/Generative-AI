@@ -17,11 +17,25 @@ api_key=os.getenv("GROQ_API_KEY")
 
 model = ChatGroq(model="llama3-8b-8192")
 
-prompt_template = ChatPromptTemplate([
+prompt_template = ChatPromptTemplate([ 
     ("system", "You are a friendly and engaging AI assistant that converses naturally with humans. Your goal is to provide helpful, thoughtful, and well-structured responses while maintaining a conversational and personable tone.Answer only to the point"),
     
     MessagesPlaceholder(variable_name="messages"),
 ])
+
+
+
+st.title("Simple chat")
+
+# Initialize chat history
+if "messages" not in st.session_state:
+    st.session_state.messages = []
+
+# Display chat messages from history on app rerun
+for message in st.session_state.messages:
+    with st.chat_message(message["role"]):
+        st.markdown(message["content"])
+
 
 # record audio from mic
 def record_audio(_input=None):
@@ -63,19 +77,29 @@ sequence = runnable_1 | runnable_2
 
 config = {"configurable": {"thread_id": "abc123"}}
 
-query=sequence.invoke({})
+if st.button("🎤 Start Recording"):
 
-input_messages = [HumanMessage(query)]
-output = app.invoke({"messages": input_messages}, config)
+    query=sequence.invoke({})
+    st.chat_message("user").markdown(query)
+    st.session_state.messages.append({"role": "user", "content": query})
+    
+    input_messages = [HumanMessage(query)]
+    output = app.invoke({"messages": input_messages}, config)
 
-ai_message=output["messages"][-1] # output contains all messages in state
-content = ai_message.content
-print(content)
-
-
-language='en'
-myobj = gTTS(content, lang=language, slow=False)
-file="audio.mp3"
-myobj.save(file)
-playsound.playsound(file, True)
-os.remove(file)
+    ai_message=output["messages"][-1] # output contains all messages in state
+    content = ai_message.content
+    # print(content)
+    # response = st.write(content)
+    
+    st.markdown(content)
+    st.session_state.messages.append({"role": "assistant", "content": content})
+    
+    language='en'
+    myobj = gTTS(content, lang=language, slow=False)
+    file="audio.mp3"
+    myobj.save(file)
+    playsound.playsound(file, True)
+    
+    # st.audio(file, format="audio/mpeg", loop=False)
+    os.remove(file)
+    st.rerun()
