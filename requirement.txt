@@ -1,9 +1,0 @@
-pip install SpeechRecognition 
-pip install gTTS
-pip install transformers
-pip install tensorflow
-pip install pyaudio
-pip install -U openai-whisper // if we want to use the whispher model for converting speech to text
-
-python -m venv .env
-.env\Scripts\activate
