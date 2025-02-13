@@ -7,7 +7,7 @@ class Transcriber:
         self.client = Groq(api_key=config.API_KEY)
 
     def transcribe_audio(self, file_name):
-        """Transcribes audio using OpenAI Whisper."""
+        # converts the audio to text using whispher model
         try:
             with open(file_name, "rb") as file:
                 response = self.client.audio.translations.create(

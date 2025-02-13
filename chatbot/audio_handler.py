@@ -8,9 +8,9 @@ class AudioHandler:
         self.recognizer = sr.Recognizer()
 
     def record_audio(self):
-        """Records audio from microphone and saves it."""
+        # records audio from microphone and saves it.
         with sr.Microphone() as mic:
-            print("Recording... Speak now!")
+            print("Recording started...")
             self.recognizer.adjust_for_ambient_noise(mic, duration=0.5)
             audio = self.recognizer.listen(mic)
 
@@ -20,14 +20,14 @@ class AudioHandler:
         return file_name
 
     def text_to_speech(self, text, file_name="audio.mp3"):
-        """Converts text to speech and saves the file."""
+        # converts text to speech and saves the file.
         engine = pyttsx3.init()
         engine.save_to_file(text, file_name)
         engine.runAndWait()
         return file_name
 
     def autoplay_audio(self,file_path):
-        """Generates an HTML snippet to autoplay audio."""
+        #generates an HTML code to autoplay audio.
         with open(file_path, "rb") as audio_file:
             audio_bytes = audio_file.read()
             b64_audio = base64.b64encode(audio_bytes).decode()

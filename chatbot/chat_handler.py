@@ -24,15 +24,15 @@ class ChatHandler:
         self.app = self.workflow.compile(checkpointer=self.memory)
 
     def call_model(self, state: MessagesState):
-        """Calls the AI model with a given state."""
+        # Calls the chat model with a given state
         prompt = self.prompt_template.invoke(state)
         response = self.model.invoke(prompt)
         return {"messages": response}
 
     def get_response(self, user_message):
-        """Handles chat messages and gets response from AI."""
+       # handles chat messages and gets response from model
         input_messages = [HumanMessage(user_message)]
-        config = {"configurable": {"thread_id": "abc123"}}
+        config = {"configurable": {"thread_id": "abc123"}} # config id is just given randomly to identify the current user
         output = self.app.invoke({"messages": input_messages}, config)
-        ai_message = output["messages"][-1]  # Last response from AI
+        ai_message = output["messages"][-1]  
         return ai_message.content
