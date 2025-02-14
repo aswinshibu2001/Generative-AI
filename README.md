@@ -10,7 +10,7 @@ Install those requirements using `pip install -r requirements.txt`
 [Python speech recognition library](https://pypi.org/project/SpeechRecognition/),a Library for performing speech recognition, was used to convert the audio captured into text initially. Later it was replaced with Openai whisper-large-v3 which was better in performance than the later. The Large Language Model(LLM) used here is llama3-8b-8192 which is loaded and runned using groq api. [Groq](https://groq.com/) offers LLM inference via APIs which allows us to run the models with high efficiency. 
 
 [Google Text-to-Speech](https://pypi.org/project/gTTS/) a Python library and CLI tool to interface with Google Translate text-to-speech API , was initially used to  deliver a voice version of the response. And later it was replaced by [pyttsx3 2.98](https://pypi.org/project/pyttsx3/), a Text to Speech (TTS) library for Python 3. It was far more better in performance than the later and offered many customisation on the voice generated. The user experience is maintained with the help of [Streamlit](https://streamlit.io/) which helps to build the interfaces quickly. The entire application is built upon [LangChain](https://www.langchain.com/) which is an open source framework for building applications based on large language models (LLMs).
-Some of the refernce material that I have used to complete the task is attached [here](https://python.langchain.com/docs/introduction/")
+Some of the refernce material that I have used to complete the task is attached [here](https://python.langchain.com/docs/introduction/)
 
 # 📌 Surface Reconstruction from Point Cloud
 
