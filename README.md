@@ -1,6 +1,6 @@
 # 📌 Voice enabled Chatbot
 
-"A Python-based chatbot that uses NLP to understand and respond to user queries. It first convert the query of the user given via voice command into a text(ASR).
+A Python-based chatbot that uses NLP to understand and respond to user queries. It first convert the query of the user given via voice command into a text(ASR).
 This text is later then passed to an LLM to generate accurate response. This response will then converted back to audio clip and gets played to the user(TTS).
 
 The file can be runned using the command `streamlit run app.py`
@@ -14,8 +14,16 @@ Some of the refernce material that I have used to complete the task is attached 
 
 # 📌 Surface Reconstruction from Point Cloud
 
-"We were given a deformed point cloud and asked to remove the deformation and reconstruct the original shape from the point cloud.
-Some of the reference materials really helped me to get a better understanding of this new concept, 
-https://inria.hal.science/hal-01017700/document
-https://www.open3d.org/html/tutorial/Advanced/surface_reconstruction.html"
+We were given a deformed point cloud and asked to remove the deformation and reconstruct the original shape from the point cloud.
 
+The file is named as `open3d.ipynb`. 
+The requirements needed to run this file is given in `requirements.txt `, which can be installed using `pip install -r requirements.txt`.
+
+Observations:
+1. The original shape of the object was cylinder
+2. There were about 3 deformations on the sufrace of the cylinder which can be considered to be misaligned points.
+3. The actual shape was reconstruced and saved as `original_shape.ply` 
+
+In this task I have used [Open3d](https://www.open3d.org/) library for visualizing the 3d data points.
+Here I have initially applied some processing on the point cloud data to remove the outliers from the data. [Here](https://www.open3d.org/docs/latest/tutorial/Advanced/pointcloud_outlier_removal.html) is the tutorial that I have refered for the same. Later I have transformed the point cloud into a mesh and then tried to remove the deformations from the mesh. [This](https://www.open3d.org/docs/latest/tutorial/Advanced/surface_reconstruction.html) tutorial lead me to this. And then I applied smoothing and convex hull to remove the hole from the surface of the cylinder and obtained the original image.
+[This](https://inria.hal.science/hal-01017700/document) is one of the reference materials really helped me to get a better understanding of this new concept. 
